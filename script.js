@@ -1,5 +1,5 @@
 const textInput = document.querySelector(".input");
-const addBtn = document.querySelector(".add");
+const addBtn = document.querySelector(".btn-add");
 const ul = document.querySelector(".list");
 const options = document.querySelectorAll(".options");
 const dropdowns = document.querySelectorAll(".dropdown");
@@ -14,12 +14,10 @@ function addItem() {
     li.innerHTML = `
      <span><input type="checkbox" id="checkbox" />${text}</span>
                 <div class="dropdown">
-                    <button class="options">
-                        <i class="fas fa-ellipsis-h"></i>
-                    </button>
-                    <div class="dropdown-content hidden">
-                        <button class="edit">Edit <i class="far fa-edit"></i></button>
-                        <button class="remove">Remove <i class="far fa-trash-alt"></i></button>
+                    <button class="btn btn-dropdown dropdown-toggle" data-toggle="dropdown"></button>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="#"><button id="edit">Edit <i class="far fa-edit"></i></button></a>
+                       <a class="dropdown-item" href="#"><button id="remove">Remove <i class="far fa-trash-alt"></i></button></a>
                     </div>
                 </div>`;
 
@@ -29,18 +27,4 @@ function addItem() {
   } else {
     alert("Field is empty.");
   }
-
-      console.log('hello');
-    if (document.querySelectorAll(".options").length > 1) {
-    console.log(true);
-        document.querySelectorAll(".options").forEach(option => {
-            option.addEventListener('click', (e) => {
-                e.currentTarget.parentNode.querySelector('.dropdown-content').classList.toggle('hidden')
-            })
-        })
-    }else if(document.querySelectorAll('.options').length <= 1){
-        document.querySelector('.options').addEventListener('click', (e) => {
-            e.currentTarget.parentNode.querySelector('.dropdown-content').classList.toggle('hidden')
-        })
-    }
 }
