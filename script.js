@@ -1,30 +1,37 @@
+const container = document.querySelector('.container')
 const textInput = document.querySelector(".input");
 const addBtn = document.querySelector(".btn-add");
-const ul = document.querySelector(".list");
-const options = document.querySelectorAll(".options");
+const todoContainer = document.querySelector('.to-do')
+const list = document.querySelector(".list");
 const dropdowns = document.querySelectorAll(".dropdown");
+let listItems;
 
 addBtn.addEventListener("click", addItem);
 
 function addItem() {
   const text = textInput.value;
-  const li = document.createElement("li");
+  const item = document.createElement("div");
+  item.classList.add("list-item");
 
+  listItems = document.querySelectorAll(".list-item");
+  let items = listItems.length + 1
   if (text !== "") {
-    li.innerHTML = `
-     <span><input type="checkbox" id="checkbox" />${text}</span>
-                <div class="dropdown">
-                    <button class="btn btn-dropdown dropdown-toggle" data-toggle="dropdown"></button>
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item" href="#"><button id="edit">Edit <i class="far fa-edit"></i></button></a>
-                       <a class="dropdown-item" href="#"><button id="remove">Remove <i class="far fa-trash-alt"></i></button></a>
-                    </div>
-                </div>`;
-
-    ul.appendChild(li);
-    console.log(document.querySelectorAll(".options"));
+    item.innerHTML = `
+     <span>
+              <input type="checkbox" id="check${items}"/>
+              <label for="check${items}">${text}</label>
+            </span>
+            <div class="dropdown">
+              <button class="btn btn-dropdown dropdown-toggle" data-toggle="dropdown"></button>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="#"><button id="edit">Edit</button></a>
+                <a class="dropdown-item" href="#"><button id="remove">Remove</button></a>
+              </div>
+            </div>`;
+    list.appendChild(item);
     textInput.value = "";
   } else {
     alert("Field is empty.");
   }
+
 }

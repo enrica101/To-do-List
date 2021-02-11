@@ -1,126 +1,189 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap");
 
-*{
-    box-sizing: border-box;
+* {
+  box-sizing: border-box;
 }
 
-body{
-    background-color: #393e46;
-    font-family: 'Poppins', sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    overflow: hidden;
+body {
+  background-color: #393e46;
+  font-family: "Poppins", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
 }
 
-.container{
-    background-color: #eee;
-    display: flex;
-    flex-direction: column;
-    padding: 1.5rem;
-    border-radius: 6px;
-    width: 25vw;
-    box-shadow: 2px 4px 6px rgba(255, 255, 255,0.1);
+.container {
+  background-color: #eee;
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem;
+  border-radius: 6px;
+  width: 25vw;
+  box-shadow: 2px 4px 6px rgba(255, 255, 255, 0.1);
 }
 
 button {
-    border: none;
-    border-width: 0;
+  border: none;
+  border-width: 0;
 }
 
 .top {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
 }
 
-.top input{
-    font-family: inherit;
-    font-size: 1rem;
-    border: none;
-    height: 1rem;
-    width: 20vw;
-    margin: 10px;
-    padding: 10px;
-    box-shadow: 2px 4px 6px rgba(0,0,0,0.1);
+.top input {
+  font-family: inherit;
+  font-size: 1rem;
+  border: none;
+  height: 2rem;
+  width: 20vw;
+  margin: 10px 10px 10px 0;
+  padding: 10px;
+  box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .top .input:focus {
-    outline: none;
+  outline: none;
 }
 
 .container .btn-add {
-    cursor: pointer;
-    font-size: 1rem;
-    border: none;
-    background-color: #ffd369;
-    color: #222831;
-    height: 2rem;
-    width: 2rem;
-    border-radius: 50%;
-    box-shadow: 2px 4px 6px rgba(0,0,0,0.1);
-    padding: 5px;
-    margin: 0;
+  cursor: pointer;
+  font-size: 1rem;
+  border: none;
+  background-color: #ffd369;
+  color: #222831;
+  height: 2rem;
+  width: 2rem;
+  border-radius: 50%;
+  box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 5px;
+  margin: 0;
 }
 
-.container button:focus{
-    outline: none;
+.container button:focus {
+  outline: none;
 }
 
-ul {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    margin: 0;
-    padding: 0;
+form {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin: 0;
+  padding: 0;
 }
 
-ul li {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    text-align: center;
-    background-color: #fff;
-    list-style: none;
-    margin: 5px 0;
-    padding: 0.5rem;
-    letter-spacing: 1px;
+form div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  background-color: #fff;
+  list-style: none;
+  margin: 3px 0;
+  padding: 6px 3px;
+  border-radius: 3px;
+}
+/* Base for label style */
+[type='checkbox']:not(:checked),
+[type='checkbox']:checked {
+    position: absolute;
     left: 0;
+    opacity: 0.01;
+}
+[type='checkbox']:not(:checked) + label,
+[type='checkbox']:checked +label{
+    position: relative;
+    padding-left: 2.3em;
+    cursor: pointer;
 }
 
-.btn-dropdown, 
-button#edit, 
+/* checkbox aspect */
+[type='checkbox']:not(:checked) + label::before,
+[type='checkbox']:checked + label::before {
+    content: '';
+    position: absolute;
+    left: 10px;
+    top: 2.5px;
+    width: 1.2rem;
+    height: 1.2rem;
+    border: 1px solid #aaa;
+    background: #fff;
+    border-radius: .2em;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1), 2px 2px 2px rgba(255,211,105, 0.8);
+    transition: all .275s;
+}
+
+/* checked mark aspect */
+[type='checkbox']:not(:checked) + label::after,
+[type='checkbox']:checked + label::after {
+    content: '✕';
+    position: absolute;
+    top: 0.696em;
+    left: 0.68em;
+    font-size: 1.1em;
+    color: #393e46;
+    line-height: 0;
+    transition: all .2s
+}
+
+[type='checkbox']:not(:checked) + label::after {
+    opacity: 0;
+    transform: scale(0) rotate(45deg);
+}
+
+[type='checkbox']:checked + label::after {
+    opacity: 1;
+    transform: scale(1) rotate(0);
+}
+
+[type="checkbox"]:checked:focus + label::before,
+[type="checkbox"]:not(:checked):focus + label::before{
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.1), 2px 2px 2px rgba(255,211,105, 0.8);
+}
+
+
+.btn-dropdown,
+button#edit,
 button#remove {
-    font-size: 0.8rem;
-    border-radius: 0%;
-    box-shadow: none;
-    background-color: transparent;
-    color: rgb(99, 100, 107);
+  font-size: 0.8rem;
+  border-radius: 0%;
+  box-shadow: none;
+  background-color: transparent;
+  color: rgba(99, 100, 107);
 }
 
-
-ul li span > input {
-    margin: 10px;
+label {
+    text-align: center;
+    margin: 0;
 }
 
+.dropdown-menu {
+  padding: 0;
+  margin: 0;
+  min-width: 7rem;
+}
 
-@media(max-height: 320px){
-    .dropdown-content button.edit, button.remove {
+.dropdown-item{
+    padding: .25rem .5rem;
+}
+
+@media (max-height: 320px) {
+  .dropdown-content button.edit,
+  button.remove {
     font-size: 0.7rem;
-    }
+  }
 }
-@media(max-width: 500px){
-    .dropdown-content button.edit, button.remove {
+@media (max-width: 500px) {
+  .dropdown-content button.edit,
+  button.remove {
     font-size: 0.7rem;
-    }
+  }
 }
-.dropdown-item::before{
-    content: none;
-    border: none;
-}
-
-.dropdown-item:focus{
-    outline: none;
+.dropdown-item:focus {
+  outline: none;
 }
